@@ -14,5 +14,8 @@ use App\Http\Controllers\SaleController;
 |
 */
 
-Route::get('/sales', [SaleController::class, 'index']);
-Route::post('/sales', [SaleController::class, 'store']);
+Route::middleware(['filter'])->group(function () {
+    Route::get('/sales', [SaleController::class, 'index']);
+    Route::post('/sales', [SaleController::class, 'store']);
+});
+
